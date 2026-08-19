@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Pack Run</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 42rem; margin: 2.5rem auto; padding: 0 1.25rem 3rem; line-height: 1.55; color: #1a1a1a; }
+    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.75rem; }
+    .meta { color: #555; font-size: 0.95rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f4f4f4; }
+    a { color: #0b57d0; }
+    ul { padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <p><a href="../index.html">All apps</a> · <a href="support.html">Support</a></p>
+  <h1>Privacy Policy — Pack Run</h1>
+  <p class="meta">Effective date: 2026-08-19<br>
+  App: Pack Run (iOS)<br>
+  Bundle ID: com.packrun.app<br>
+  Developer: Independent developer</p>
+
+  <p>This policy matches the current v1 design: <strong>one function — are dogs at this park</strong>. Location is used to <strong>find nearby dog parks</strong>. Occupancy is <strong>this device</strong> (or the same local preview) <strong>unless a LAN occupancy API is up</strong>. <strong>No account</strong>. <strong>No tracking</strong>. <strong>No chat</strong>. No ads. No analytics SDK. No in-app purchases.</p>
+  <p>App Store privacy label intent: <strong>Precise Location for App Functionality</strong> (nearby parks). Optional dog photo stays on this device unless a LAN occupancy API is reachable. Tracking: <strong>No</strong>.</p>
+
+  <h2>1. Summary</h2>
+  <table>
+    <tr><th>Topic</th><th>v1 practice</th></tr>
+    <tr><td>Account</td><td>Not required. None exists.</td></tr>
+    <tr><td>Dog name / photo / check-in</td><td>Stored on your device</td></tr>
+    <tr><td>Location</td><td>When In Use, optional. Nearby dog parks. No background tracking.</td></tr>
+    <tr><td>Occupancy</td><td>This device / same local preview unless a LAN API is up. Native App Store / TestFlight builds have no cloud occupancy.</td></tr>
+    <tr><td>Chat</td><td>None</td></tr>
+    <tr><td>Ads</td><td>None</td></tr>
+    <tr><td>In-app purchases</td><td>None</td></tr>
+    <tr><td>Tracking / IDFA</td><td>Not used</td></tr>
+    <tr><td>Analytics</td><td>None</td></tr>
+  </table>
+  <p><strong>Short version:</strong> Pack Run answers one question: are dogs at this park. Location finds parks. Check-ins live on this phone. Other phones see them only if a local LAN occupancy API is running. We do not require an account. We do not chat. We do not track you.</p>
+
+  <h2>2. What the app is</h2>
+  <p>Pack Run is a park check-in. You name your dog (optional photo). You see nearby OSM dog parks when location is on. You check in. Status is Quiet / A few / Busy. Check-in expires in 90 minutes. Empty parks say “Be the first dog here.”</p>
+  <p>It is not a social network with accounts. It is not a tracker. It is not a health or veterinary product.</p>
+  <p>On iOS the app is packaged with Capacitor: a native shell that shows the UI in an embedded WKWebView. Saves run inside that WebView. Location uses the system When In Use permission.</p>
+
+  <h2>3. Information stored on your device</h2>
+  <p>Pack Run stores state with WebView localStorage (keys <code>pack-run-v1</code> and a local device id). This typically includes:</p>
+  <ul>
+    <li>Dog name, optional photo, and pack size (1–4)</li>
+    <li>Your current check-in (park, time, pack, name, photo) until it expires or you leave</li>
+    <li>A random device id used only to tell your check-in from another on the same local preview</li>
+  </ul>
+  <p>This stays <strong>on your device</strong> unless a LAN occupancy API is reachable (section 5). There is no Pack Run cloud account.</p>
+  <p>Deleting the app, or clearing WebView data for the app, removes that local data. We cannot restore local-only rows from our side.</p>
+
+  <h2>4. Location (optional)</h2>
+  <p>If you allow <strong>Location When In Use</strong>, Pack Run reads your current coordinates to:</p>
+  <ul>
+    <li>Find nearby OpenStreetMap dog parks via <code>overpass-api.de</code></li>
+    <li>Show distance, and whether you are close to a park when you check in</li>
+  </ul>
+  <p>Those Overpass requests include latitude and longitude so the feed can return nearby parks. Location is <strong>not</strong> used for ads, tracking, or background following. The usage string on the system prompt is: Pack Run uses your location to find nearby dog parks and to check you in at the one you’re standing in. It does not track you in the background.</p>
+  <p>If you deny location, or the park list is down, you can still browse a short fallback list of parks. Occupancy still works as described in section 5.</p>
+  <p>OpenStreetMap / Overpass operate that API. Their terms apply to the request they receive. We do not send your dog photo or check-in to Overpass.</p>
+
+  <h2>5. Occupancy (this device unless LAN API is up)</h2>
+  <p>The shipping App Store / TestFlight binary does <strong>not</strong> talk to a Pack Run cloud. Occupancy is <strong>this device</strong>. The UI says “This phone only.” when the occupancy request is not available.</p>
+  <p>A local development / same-Wi-Fi preview can expose <code>GET/POST /api/occupancy</code> on that machine. If that LAN API is up, check-ins on devices hitting that preview (device id, park, pack, dog name, optional capped photo, timestamp) are stored on that local machine for 90 minutes so those devices can see each other. That is a local preview, not an internet multi-user service.</p>
+  <p>If the LAN API is down or the request times out, occupancy fails open to this phone. The app does not invent a crowd.</p>
+
+  <h2>6. Information we do not collect (v1)</h2>
+  <ul>
+    <li>Name, email, or password for an account</li>
+    <li>Chat messages (there is no chat)</li>
+    <li>Background location</li>
+    <li>Contacts, microphone, or camera as a required feature (an optional dog photo may use the photo picker)</li>
+    <li>Advertising or analytics SDKs</li>
+    <li>Advertising Identifier</li>
+    <li>Sale of personal information</li>
+  </ul>
+  <p>We do not use location except as described in section 4.</p>
+
+  <h2>7. Internet access</h2>
+  <p>The App Store build loads bundled assets from the app package for the UI. Core check-in is intended to work without an account and without a Pack Run server. The app uses the network for:</p>
+  <ul>
+    <li>Optional Overpass park-list requests (if location is allowed)</li>
+    <li>Optional LAN occupancy requests when a local preview API is reachable</li>
+    <li>App Store updates and system services outside our control</li>
+  </ul>
+
+  <h2>8. Analytics and crash data</h2>
+  <p>No first-party or third-party analytics product is enabled. Apple may collect standard App Store / OS diagnostics governed by Apple’s policies and your device settings.</p>
+
+  <h2>9. Children</h2>
+  <p>Pack Run is not directed at children under 13 as a data-collecting social product. v1 has no chat, ads, or accounts. Occupancy on the shipping binary is this device.</p>
+
+  <h2>10. Retention, security, choices</h2>
+  <p>Local data remains on your device until you delete the app or clear app/WebView data. LAN occupancy rows (if a local API is up) expire after 90 minutes. Developer-held cloud occupancy for v1: none. No method of storage is 100% secure.</p>
+  <ul>
+    <li>Use the app without creating an account.</li>
+    <li>Deny location; a short park list still works.</li>
+    <li>Skip the dog photo.</li>
+    <li>Delete the app to remove local data from that installation.</li>
+    <li>Limit optional system analytics / crash sharing in iOS Settings.</li>
+  </ul>
+
+  <h2>11. Changes and contact</h2>
+  <p>We may update this policy when data practices change. Material changes will be reflected in App Store privacy answers as required. If a build ships internet occupancy, accounts, chat, or analytics, this document and the store labels will be updated with that release.</p>
+  <p>For privacy questions, use the <a href="support.html">Support page</a> or the App Store product-page support channel. There is no public inbox at a placeholder domain.</p>
+</body>
+</html>
