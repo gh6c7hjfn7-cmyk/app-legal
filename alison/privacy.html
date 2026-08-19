@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Alison</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 42rem; margin: 2.5rem auto; padding: 0 1.25rem 3rem; line-height: 1.55; color: #1a1a1a; }
+    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.75rem; }
+    .meta { color: #555; font-size: 0.95rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f4f4f4; }
+    a { color: #0b57d0; }
+    ul { padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <p><a href="../index.html">All apps</a> · <a href="support.html">Support</a></p>
+  <h1>Privacy Policy — Alison</h1>
+  <p class="meta">Effective date: 2026-08-19<br>
+  App: Alison (iOS)<br>
+  Bundle ID: com.alison.app<br>
+  Developer: Independent developer</p>
+
+  <p>This policy matches the current v1 design: a <strong>personal journal</strong> with <strong>rows stored on your device</strong>, <strong>no account</strong>, <strong>no ads</strong>, <strong>no analytics SDK</strong>, and <strong>no in-app purchases</strong>. Location is used <strong>only</strong> to sample local weather, pollen, and pressure. Alison is <strong>not a medical device</strong>. It does <strong>not</strong> diagnose, treat, cure, or prevent migraine or any condition.</p>
+  <p>App Store privacy label intent: <strong>Precise Location for App Functionality</strong> (weather / pollen / pressure). Journal rows are <strong>not</strong> sent to the developer. Tracking: <strong>No</strong>.</p>
+
+  <h2>1. Summary</h2>
+  <table>
+    <tr><th>Topic</th><th>v1 practice</th></tr>
+    <tr><td>Account</td><td>Not required. None exists.</td></tr>
+    <tr><td>Journal save</td><td>Stored on your device only</td></tr>
+    <tr><td>Location</td><td>When In Use, optional. Weather / pollen / pressure / AQI only. Journal still works if denied.</td></tr>
+    <tr><td>Ads</td><td>None</td></tr>
+    <tr><td>In-app purchases</td><td>None</td></tr>
+    <tr><td>Tracking / IDFA</td><td>Not used</td></tr>
+    <tr><td>Analytics</td><td>None</td></tr>
+    <tr><td>Medical device</td><td>No. Not a device. Does not diagnose or treat.</td></tr>
+  </table>
+  <p><strong>Short version:</strong> Alison keeps your journal on your iPhone or iPad. Location is optional and only used to look up local weather, pollen, and pressure. We do not collect your episode, meal, or sleep rows. We do not sell information. We do not require an account. Alison does not diagnose or treat anything.</p>
+
+  <h2>2. What the app is</h2>
+  <p>Alison is a personal journal. You can log headache episodes, meals, and sleep. You can optionally sample local surface pressure, humidity, air quality, and pollen. Pattern output is observational co-occurrence only. It is not a trigger test, not causality, and not advice. A copyable summary restates what you logged so you can hand it to a clinician. That summary is not a diagnosis.</p>
+  <p>Alison is <strong>not</strong> a medical device. It does <strong>not</strong> diagnose, treat, cure, or prevent migraine or any condition. ICHD-3 diagnosis is a clinician act. Guide text is education, not assessment.</p>
+  <p>On iOS the app is packaged with Capacitor: a native shell that shows the journal in an embedded WKWebView. Journal logic and saves run inside that WebView. Location uses the system When In Use permission.</p>
+
+  <h2>3. Information stored on your device</h2>
+  <p>Alison stores state with WebView localStorage (key <code>alison-v1</code>). This typically includes:</p>
+  <ul>
+    <li>Headache episode rows you enter (intensity, duration, laterality, quality, associated symptoms, abortive text, optional note, time)</li>
+    <li>Meal rows (free text and culinary tokens)</li>
+    <li>Sleep hours by calendar day</li>
+    <li>Environment samples (time, coordinates, pressure, 3-hour pressure change, humidity, US AQI, pollen)</li>
+    <li>Simple settings (diet chip, week shuffle seed)</li>
+  </ul>
+  <p>This journal data stays <strong>on your device</strong>. v1 does not upload episode, meal, or sleep rows to a developer server. There is no cloud-save account.</p>
+  <p>Deleting the app, or clearing WebView data for the app, removes that local journal. We cannot restore local-only rows from our side.</p>
+
+  <h2>4. Location (optional)</h2>
+  <p>If you allow <strong>Location When In Use</strong>, Alison reads your current coordinates to query public environmental feeds:</p>
+  <ul>
+    <li><code>api.open-meteo.com</code> — surface pressure and humidity</li>
+    <li><code>air-quality-api.open-meteo.com</code> — US AQI and pollen</li>
+  </ul>
+  <p>Those requests include latitude and longitude so the feed can return local values. Coordinates from a sample are also stored in the on-device environment log. Location is <strong>not</strong> used for ads, tracking, or sharing your position with other people. The usage string on the system prompt is: Alison uses your location only to sample local pressure, air quality, and pollen. It does not diagnose anything.</p>
+  <p>If you deny location, or the feed is down, the journal still works. You can still log episodes, meals, and sleep. Environment numbers may be blank.</p>
+  <p>Open-Meteo operates those APIs. Their terms apply to the request they receive. We do not send your journal rows to Open-Meteo.</p>
+
+  <h2>5. Information we do not collect (v1)</h2>
+  <ul>
+    <li>Name, email, or password</li>
+    <li>Contacts, photos, microphone, or camera</li>
+    <li>Advertising or analytics SDKs</li>
+    <li>Advertising Identifier</li>
+    <li>Sale of personal information</li>
+    <li>Episode, meal, or sleep rows off the device</li>
+  </ul>
+  <p>We do not use location except as described in section 4.</p>
+
+  <h2>6. Internet access</h2>
+  <p>The App Store build loads bundled assets from the app package for the journal UI. Core logging is intended to work without an account and without talking to an Alison server. The app uses the network only for optional Open-Meteo weather / air-quality requests (if location is allowed) and for App Store updates and system services outside our control.</p>
+
+  <h2>7. Analytics and crash data</h2>
+  <p>No first-party or third-party analytics product is enabled. Apple may collect standard App Store / OS diagnostics governed by Apple’s policies and your device settings.</p>
+
+  <h2>8. Children</h2>
+  <p>Alison is not directed at children under 13 as a data-collecting product. v1 has no chat, ads, or accounts. It is a personal journal, not a toy and not a medical device.</p>
+
+  <h2>9. Retention, security, choices</h2>
+  <p>Local journal data remains on your device until you delete the app or clear app/WebView data. Developer-held journal rows for v1: none. No method of storage is 100% secure.</p>
+  <ul>
+    <li>Use the journal without creating an account.</li>
+    <li>Deny location; the journal still works.</li>
+    <li>Delete the app to remove local journal data from that installation.</li>
+    <li>Limit optional system analytics / crash sharing in iOS Settings.</li>
+  </ul>
+
+  <h2>10. Changes and contact</h2>
+  <p>We may update this policy when data practices change. Material changes will be reflected in App Store privacy answers as required.</p>
+  <p>For privacy questions, use the <a href="support.html">Support page</a> or the App Store product-page support channel. There is no public inbox at a placeholder domain.</p>
+</body>
+</html>
