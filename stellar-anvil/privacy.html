@@ -19,7 +19,7 @@
 <body>
   <p><a href="../index.html">All apps</a> · <a href="support.html">Support</a></p>
   <h1>Privacy Policy — Stellar Anvil</h1>
-  <p class="meta">Effective date: 2026-08-01<br>
+  <p class="meta">Effective date: 2026-08-20<br>
   App: Stellar Anvil (iOS)<br>
   Bundle ID: com.cosmicforge.app<br>
   Developer: Independent developer</p>
@@ -33,7 +33,7 @@
     <tr><td>Account</td><td>Not required to play the core game</td></tr>
     <tr><td>Progress save</td><td>Stored on your device only</td></tr>
     <tr><td>Ads</td><td>None</td></tr>
-    <tr><td>In-app purchases</td><td>Optional Foundry Patron (one-time) via Apple, if offered in the live build</td></tr>
+    <tr><td>In-app purchases</td><td>None in v1</td></tr>
     <tr><td>Tracking / IDFA</td><td>Not used</td></tr>
     <tr><td>Analytics</td><td>None</td></tr>
   </table>
@@ -44,7 +44,7 @@
   <p>On iOS the app is packaged with Capacitor: a native shell that displays the game in an embedded WKWebView. Game logic and saves run inside that WebView.</p>
 
   <h2>3. Information stored on your device</h2>
-  <p>Stellar Anvil stores game state using WebView localStorage. This typically includes resource and upgrade state, heat and entropy progress, unlocked Marks, Chronicle flags, Ignite / season values, UI preferences, and (if you buy Foundry Patron) on-device entitlement flags such as patron status and selected forge skin.</p>
+  <p>Stellar Anvil stores game state using WebView localStorage. This typically includes resource and upgrade state, heat and entropy progress, unlocked Marks, Chronicle flags, Ignite / season values, and simple UI preferences.</p>
   <p>This data stays <strong>on your device</strong>. v1 does not upload it to a developer server. There is no Stellar Anvil cloud-save account.</p>
   <p>Deleting the app, or clearing WebView data for the app, removes that local progress. We cannot restore local-only progress from our side.</p>
 
@@ -60,8 +60,8 @@
     <li>Sell personal information or build advertising profiles</li>
   </ul>
 
-  <h2>5. Optional Foundry Patron</h2>
-  <p>If you buy Foundry Patron, <strong>Apple</strong> processes the payment. We store on-device entitlement flags so cosmetics and the offline-window stay unlocked. We do not receive your full card number. Apple’s privacy policy applies to the payment. Patron does not require a Stellar Anvil account. Restore uses Apple’s standard restore flow for your Apple ID.</p>
+  <h2>5. In-app purchases</h2>
+  <p>v1 has <strong>no in-app purchases</strong>. Core play is free. There is no Foundry Patron product attached to this version.</p>
 
   <h2>6. Internet access</h2>
   <p>The App Store build loads bundled game assets from the app package for core play. It is not a remote website. The app or OS may still use the network for App Store updates and system services outside our control. Core forge play is intended to work without an account and without talking to a Stellar Anvil server.</p>
@@ -84,7 +84,7 @@
   </ul>
 
   <h2>11. Third parties</h2>
-  <p>v1 does not share game progress with advertisers or data brokers. Apple provides the App Store, device OS, and (if used) In-App Purchase infrastructure.</p>
+  <p>v1 does not share game progress with advertisers or data brokers. Apple provides the App Store and device OS.</p>
 
   <h2>12. Changes</h2>
   <p>We may update this policy when data practices change. The effective date at the top will change. Material changes will be reflected in App Store privacy answers as required. If a build ships analytics, accounts, or other plugins, this document and the store labels will be updated with that release.</p>
