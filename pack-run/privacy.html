@@ -9,7 +9,7 @@
     h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
     h2 { font-size: 1.15rem; margin-top: 1.75rem; }
     .meta { color: #555; font-size: 0.95rem; }
-    table { border-collapse: collapse; width: 100%; margin: 2rem 0; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
     th, td { border: 1px solid #ccc; padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
     th { background: #f4f4f4; }
     a { color: #0b57d0; }
@@ -26,19 +26,19 @@
   Developer: Independent developer</p>
 
   <p><strong>One function:</strong> are dogs at this park.</p>
-  <p>Location is used <strong>only</strong> to find nearby dog parks. When you check in, <strong>dog name, an optional thumbnail photo, park, pack size, time, and a random device id</strong> go to a <strong>shared live board</strong> so other people using Pack Run can see who is at that park. Rows expire after <strong>90 minutes</strong>. <strong>No account. No chat. No ads. No analytics SDK. No IAP. No tracking.</strong></p>
-  <p>App Store privacy label intent: <strong>Precise Location</strong> and <strong>Photos</strong> (optional) for App Functionality. <strong>User Content</strong> (check-in on the live board). Tracking: <strong>No</strong>.</p>
+  <p>Location is used <strong>only</strong> to find nearby dog parks. Check-in (dog name, optional thumbnail, park, pack size, time, random device id) <strong>stays on this phone</strong> in the App Store / Review binary. A live tester board is used only if that binary was built with board credentials; rows then expire after <strong>90 minutes</strong>. If the board is down or not configured, occupancy is this phone only. <strong>No account. No chat. No ads. No analytics SDK. No IAP. No tracking.</strong></p>
+  <p>App Store privacy label intent: <strong>Precise Location</strong> and <strong>Photos</strong> (optional) for App Functionality. <strong>User Content</strong> only if a live board is configured. Tracking: <strong>No</strong>.</p>
 
   <h2>1. Summary</h2>
   <table>
     <tr><th>Topic</th><th>Practice</th></tr>
     <tr><td>Account</td><td>None</td></tr>
-    <tr><td>Dog name / photo / check-in</td><td>On your device and, when you check in, on the live board</td></tr>
+    <tr><td>Dog name / photo / check-in</td><td>On your device. On a live tester board only if that binary is configured</td></tr>
     <tr><td>Location</td><td>When In Use, optional. Nearby parks. No background tracking</td></tr>
-    <tr><td>Occupancy</td><td>Live shared board (90 min). If the board is down, this phone only</td></tr>
+    <tr><td>Occupancy</td><td>This phone. Live board (90 min) only if configured. If the board is down or not configured, this phone only</td></tr>
     <tr><td>Chat / ads / IAP / IDFA / analytics SDK</td><td>None</td></tr>
   </table>
-  <p><strong>Short version:</strong> You can use Pack Run without an account. Location finds parks. Checking in publishes a short occupancy row so other testers see your dog at that park. Leave, wait 90 minutes, or delete the app to stop showing.</p>
+  <p><strong>Short version:</strong> You can use Pack Run without an account. Location finds parks. Checking in records occupancy on this phone. If a live tester board is configured, other testers can see that row for 90 minutes. Leave, wait 90 minutes, or delete the app to stop showing.</p>
 
   <h2>2. On your device</h2>
   <p>WebView <code>localStorage</code> (<code>pack-run-v1</code>) plus a random device id holds dog name, optional full photo, pack size, and current check-in. Deleting the app or clearing WebView data removes that copy. We cannot restore it.</p>
@@ -46,10 +46,10 @@
   <h2>3. Location (optional)</h2>
   <p>If you allow Location When In Use, Pack Run reads coordinates to find nearby OpenStreetMap dog parks (Overpass and Photon) and to show distance. Not for ads, tracking, or background following. Deny location and a short list still works. Dog photos are not sent to Overpass.</p>
 
-  <h2>4. Live occupancy board</h2>
-  <p>When you check in, Pack Run publishes: random device id, park, pack size, dog name, optional thumbnail (not the full camera file), timestamp. Other installs poll the board about every 8 seconds while open to show Who’s here and a connected dog on the opening screen.</p>
-  <p>The tester board is stored via GitHub (a gist used as occupancy storage). Rows last 90 minutes or until you tap We’ve left. If the board is down, occupancy fails open to this phone. The app does not invent a crowd.</p>
-  <p>Do not check in with a photo you do not want other testers to see. There is still no Pack Run account.</p>
+  <h2>4. Occupancy (this phone; live board only if configured)</h2>
+  <p>When you check in, Pack Run stores on this phone: random device id, park, pack size, dog name, optional thumbnail (not the full camera file), timestamp.</p>
+  <p>The App Store / Review binary includes no board token. Occupancy is this phone. The app does not call GitHub for occupancy unless a live tester board was configured at archive time (Internal TestFlight). Those rows last 90 minutes or until you tap We’ve left. If the board is down or not configured, occupancy fails open to this phone. The app does not invent a crowd.</p>
+  <p>Do not check in with a photo you do not want other testers to see if you are on a live-board build. There is still no Pack Run account.</p>
 
   <h2>5. We do not</h2>
   <ul>
@@ -64,7 +64,7 @@
   <ul>
     <li>Apple — App Store, TestFlight, OS</li>
     <li>Overpass / OpenStreetMap / Photon — park search (coordinates only)</li>
-    <li>GitHub — occupancy board storage for live check-ins</li>
+    <li>GitHub — occupancy board storage only when a live board is configured</li>
   </ul>
 
   <h2>7. Contact</h2>
