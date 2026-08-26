@@ -1,74 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy — Pack Run</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 42rem; margin: 2.5rem auto; padding: 0 1.25rem 3rem; line-height: 1.55; color: #1a1a1a; }
-    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.15rem; margin-top: 1.75rem; }
-    .meta { color: #555; font-size: 0.95rem; }
-    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-    th, td { border: 1px solid #ccc; padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
-    th { background: #f4f4f4; }
-    a { color: #0b57d0; }
-    ul { padding-left: 1.2rem; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="refresh" content="0; url=https://nightorders.app/privacy-pack-run.html" />
+  <link rel="canonical" href="https://nightorders.app/privacy-pack-run.html" />
+  <title>Privacy — Pack Run</title>
 </head>
 <body>
-  <p><a href="../index.html">All apps</a> · <a href="support.html">Support</a></p>
-  <h1>Privacy Policy — Pack Run</h1>
-  <p class="meta">Effective date: 2026-08-23T17:12:00.000Z<br>
-  Last updated: 2026-08-25T19:10:00Z<br>
-  App: Pack Run (iOS)<br>
-  Bundle ID: com.packrun.app<br>
-  Developer: Independent developer</p>
-
-  <p><strong>One function:</strong> are dogs at this park.</p>
-  <p>Location is used <strong>only</strong> to find nearby dog parks, and only while the app is in use. When you check in, a live occupancy board records park, pack size, time, and a hashed device id. That row lasts <strong>90 minutes</strong>, then it is <strong>erased</strong>. Still at the park? Check in again. GPS, photos, and dog names stay on this phone — they are not sent on the occupancy wire. If the occupancy host is down, occupancy is this phone only. You can add, change, or delete dogs on this phone. Master delete blanks the pack. OOOPS can put the last erase or last removed dog back. <strong>No account. No chat. No ads. No analytics SDK. No tracking.</strong> Keep is a 30-day free trial, then $0.99 / month through Apple. Park list stays without Keep. Check-in waits on Keep. Services end when trial or Keep ends.</p>
-  <p>App Store privacy label intent: <strong>Precise Location</strong> and <strong>Photos</strong> (optional) for App Functionality. Occupancy check-in is <strong>User Content</strong> on the live board (park + pack + hashed device). Tracking: <strong>No</strong>.</p>
-
-  <h2>1. Summary</h2>
-  <table>
-    <tr><th>Topic</th><th>Practice</th></tr>
-    <tr><td>Account</td><td>None</td></tr>
-    <tr><td>Dog name / photo</td><td>On your device. Not sent on the occupancy wire</td></tr>
-    <tr><td>Location</td><td>When In Use, optional. Nearby parks. No background tracking</td></tr>
-    <tr><td>Occupancy</td><td>Live board: park, pack size, time, hashed device id. Lasts 90 minutes, then erased. Re-check-in if still at the park. If the host is down, this phone only</td></tr>
-    <tr><td>Chat / ads / IDFA / analytics SDK</td><td>None</td></tr>
-    <tr><td>Keep</td><td>30-day free trial, then $0.99 / month through Apple. Park list stays. Check-in waits on Keep. Cancel in Apple Subscriptions.</td></tr>
-  </table>
-  <p><strong>Short version:</strong> You can use Pack Run without an account. Location finds parks. Checking in posts park, pack size, time, and a hashed device id to the occupancy host for 90 minutes, then the row is erased. GPS, photos, and names stay on this phone. If the host is down, occupancy is this phone only. Leave, wait 90 minutes, master-delete, or delete the app to stop showing.</p>
-
-  <h2>2. On your device</h2>
-  <p>WebView <code>localStorage</code> (<code>pack-run-v1</code>, <code>pack-run-oops-v1</code>) plus a random device id holds your dogs, which dog is on the board, pack size, current check-in (90 minutes), and the last OOOPS snapshot. Master delete blanks the pack. OOOPS can put that last erase back until you erase again. Deleting the app or clearing WebView data removes that copy. We cannot restore it after that.</p>
-
-  <h2>3. Location (optional)</h2>
-  <p>If you allow Location When In Use, Pack Run reads coordinates to find nearby OpenStreetMap dog parks (Overpass and Photon) and to show distance. Not for ads, tracking, or background following. Deny location and a short list still works. Dog photos are not sent to Overpass. Location is <strong>When In Use only</strong>. Pack Run does not request Always location.</p>
-
-  <h2>4. Occupancy (live board; fail-open this phone)</h2>
-  <p>When you check in, Pack Run stores on this phone: random device id, park, pack size, dog name, optional thumbnail (not the full camera file), timestamp, and GPS used to confirm you are at the park.</p>
-  <p>The occupancy host is <code>https://pack-run-occupancy.s7jvx9zpbk.workers.dev</code> (Cloudflare Workers). The Review / App Store binary includes that host. There is no GitHub gist board and no gist token. The public occupancy row is park, pack size, time, and a hashed device id — not GPS, not photos, not dog names. Those rows last <strong>90 minutes</strong>, then they are erased. Still at the park? Check in again. Leave deletes the row now. If the occupancy host is down, occupancy fails open to this phone. The app does not invent a crowd.</p>
-  <p>There is still no Pack Run account.</p>
-
-  <h2>5. We do not</h2>
-  <ul>
-    <li>Email / password account</li>
-    <li>Chat</li>
-    <li>Background location</li>
-    <li>Required camera (photo picker is optional)</li>
-    <li>Ads, analytics SDKs, IDFA, or sale of personal information</li>
-  </ul>
-
-  <h2>6. Third parties</h2>
-  <ul>
-    <li>Apple — App Store, TestFlight, OS</li>
-    <li>Overpass / OpenStreetMap / Photon — park search (coordinates only)</li>
-    <li>Cloudflare Workers occupancy host — <code>pack-run-occupancy.s7jvx9zpbk.workers.dev</code> (park + pack + hashed device; 90 minutes). Not GitHub gist.</li>
-  </ul>
-
-  <h2>7. Contact</h2>
-  <p>Email <a href="mailto:nightorders.apps@icloud.com">nightorders.apps@icloud.com</a>. Also the <a href="support.html">Support page</a>. Material changes update the effective date and App Store privacy answers.</p>
+  <p>Live Pack Run privacy: <a href="https://nightorders.app/privacy-pack-run.html">https://nightorders.app/privacy-pack-run.html</a></p>
 </body>
 </html>
